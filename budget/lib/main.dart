@@ -62,12 +62,9 @@ void main() async {
         .compareTo((b.mostLikelyCategoryName ?? b.icon)));
     setHighRefreshRate();
     runApp(
-      DevicePreview(
-        enabled: enableDevicePreview,
-        builder: (context) => InitializeLocalizations(
-          child: RestartApp(
-            child: InitializeApp(key: appStateKey),
-          ),
+      InitializeLocalizations(
+        child: RestartApp(
+          child: InitializeApp(key: appStateKey),
         ),
       ),
     );
@@ -106,8 +103,7 @@ class App extends StatelessWidget {
       showPerformanceOverlay: kProfileMode,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      locale:
-          enableDevicePreview ? DevicePreview.locale(context) : context.locale,
+        locale: context.locale,
       shortcuts: shortcuts,
       actions: keyboardIntents,
       themeAnimationDuration: Duration(milliseconds: 400),
